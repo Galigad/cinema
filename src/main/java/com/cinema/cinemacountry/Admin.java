@@ -25,10 +25,10 @@ public class Admin {
 		pin=this.pin;
 	}
 		
-//	@Bean
-//	public Movie createMovie() {
-//		return new Movie();
-//	}
+	@Bean
+	public Movie createMovie() {
+		return new Movie("");
+	}
 	
 	public boolean deleteMovie(Movie theMovie) {
 		return true;
