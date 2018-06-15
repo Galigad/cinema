@@ -17,7 +17,6 @@ public class Admin {
 	private int pin;
 	
 	public Admin (String name, String surname, String mail, int phoneNumber, int pin) {
-		id=id+1;
 		name=this.name;
 		surname=this.surname;
 		mail=this.mail;
@@ -26,8 +25,8 @@ public class Admin {
 	}
 		
 	@Bean
-	public Movie createMovie() {
-		return new Movie("");
+	public Movie createMovie(String title) {
+		return new Movie(title);
 	}
 	
 	public boolean deleteMovie(Movie theMovie) {
@@ -38,21 +37,21 @@ public class Admin {
 		return true;
 	}
 	
-//	public boolean addSeans (Seans theSeans) {
-//		return true;
-//	}
-//
-//	public boolean deleteSeans(Seans theSeans) {
-//		return true;
-//	}
-//
-//	@Bean
+	public boolean addSeans (Seans theSeans) {
+		return true;
+	}
+	
+	public boolean deleteSeans(Seans theSeans) {
+		return true;
+	}
+	
+	@Bean
 //	public Hall createHall() {
 //		return new Hall();
 //	}
-//
-//	public boolean deleteHall(Hall theHall) {
-//		return true;
-//	}
+
+	public boolean deleteHall(Hall theHall) {
+		return true;
+	}
 
 }
