@@ -14,7 +14,6 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-
     private long id; //generated value
     private String firstName;
     private String lastName;
