@@ -24,35 +24,35 @@ public class Admin {
 		phoneNumber=this.phoneNumber;
 		pin=this.pin;
 	}
-		
-//	@Bean
-//	public Movie createMovie() {
-//		return new Movie();
-//	}
-	
+
+	@Bean
+	public Movie createMovie() {
+		return new Movie();
+	}
+
 	public boolean deleteMovie(Movie theMovie) {
 		return true;
 	}
-	
+
 	public boolean addMovie (Movie theMovie) {
 		return true;
 	}
 	
-//	public boolean addSeans (Seans theSeans) {
-//		return true;
-//	}
-//
-//	public boolean deleteSeans(Seans theSeans) {
-//		return true;
-//	}
-//
-//	@Bean
-//	public Hall createHall() {
-//		return new Hall();
-//	}
-//
-//	public boolean deleteHall(Hall theHall) {
-//		return true;
-//	}
+	public boolean addSeans (Seans theSeans) {
+		return true;
+	}
+	
+	public boolean deleteSeans(Seans theSeans) {
+		return true;
+	}
+
+	@Bean
+	public Hall createHall() {
+		return new Hall;
+	}
+	
+	public boolean deleteHall(Hall theHall) {
+		return true;
+	}
 
 }
