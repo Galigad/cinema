@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @Getter
 public class Repertory {
+    //
     List<Seans> seansList = new ArrayList<>();
 
     public void addSeans(Seans seans) {
