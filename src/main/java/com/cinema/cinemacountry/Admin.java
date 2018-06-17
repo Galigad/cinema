@@ -1,5 +1,7 @@
 package com.cinema.cinemacountry;
 
+import java.time.LocalDateTime;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -16,6 +18,9 @@ public class Admin {
 	private int phoneNumber;
 	private int pin;
 	
+	private Repertory repertory;
+	private Seans seans;
+	
 	public Admin (String name, String surname, String mail, int phoneNumber, int pin) {
 		name=this.name;
 		surname=this.surname;
@@ -30,28 +35,44 @@ public class Admin {
 	}
 	
 	public boolean deleteMovie(Movie theMovie) {
+		if(theMovie!=null) {
+			theMovie=null;
+			return true;
+		}else {
+			System.out.println("Nie ma takiego filmu do wykasowania");
+			return false;
+		}
+	}
+	
+	public boolean addMovie (Movie theMovie) { //nie ma do czego dodaæ filmu. Gdzie bêdzie trzymana lista filmów?
 		return true;
 	}
 	
-	public boolean addMovie (Movie theMovie) {
+	public Seans createSeans(Movie movie, Hall hall, LocalDateTime date) { //wydaje mi siê jednak, ¿e Hall nie powinien byæ w klasie Seans
+		Seans seans = new Seans(movie,hall,date);
+		return seans;
+	}
+	
+	public boolean addSeans (Repertory repertory, Seans theSeans) { //jak w Hall bêdzie dodana List<Seans> to w tym miejsu bêdzie siê dodawa³o w której sali bêdzie seans
+		repertory.seansList.add(theSeans);
+		
 		return true;
 	}
 	
-	public boolean addSeans (Seans theSeans) {
-		return true;
-	}
-	
-	public boolean deleteSeans(Seans theSeans) {
-		return true;
+	public boolean deleteSeans(Repertory repertory, Seans theSeans) {
+		if(theSeans!=null&&repertory.seansList.contains(theSeans)) {
+			repertory.seansList.remove(theSeans);
+			System.out.println("Seans zosta³ usuniêty z Repertuaru");
+			return true;
+		}else {
+			System.out.println("Tego seansu nie ma w Repertuarze.");
+			return false;
+		}
 	}
 	
 	@Bean
-//	public Hall createHall() {
-//		return new Hall();
-//	}
-
-	public boolean deleteHall(Hall theHall) {
-		return true;
+	public Hall createHall(String hallName, int capacity) { //brakuje w klasie Hall pól Seat [][] oraz List<Seans>
+		return new Hall(name, capacity);					
 	}
 
 }
