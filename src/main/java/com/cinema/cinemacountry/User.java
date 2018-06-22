@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /*kaja*/
 @Getter
@@ -45,7 +42,11 @@ public class User {
         return true;
     }
 
-    public Reservation createReservation(Reservation reservation, boolean realised) {
+    public Reservation createReservation(Reservation reservation, boolean realised) {//default false?
+        //find some way to actualize realised reservations
+        //jaki ma sens mapa skoro reservation juz ma przypisany true/false?
+        //
+        realised = reservation.isRealised();
         reservationMap.put(reservation, realised);
         return reservation;
     }
@@ -58,10 +59,11 @@ public class User {
         return allReservations;
     }
 
-    public List<Reservation> checkActiveReservations() {//those having true
+    public List<Reservation> checkActiveReservations() {//those having false
         List<Reservation> activeReservations = new ArrayList<>();
         for (Map.Entry<Reservation, Boolean> entry : reservationMap.entrySet()) {
-            if (entry.getValue().equals(true)) {
+            if (entry.getValue().equals(false)) {
+                System.out.println("value: " + entry.getValue());
                 activeReservations.add(entry.getKey());
             }
         }
@@ -69,7 +71,22 @@ public class User {
     }
 
     public boolean cancelReservation(long reservationId) {
-        return false;//temporary
+        Reservation keyReservation = null;
+        boolean succeed = false;
+        for (Map.Entry<Reservation, Boolean> reservation : reservationMap.entrySet()) {
+            long id = reservation.getKey().getId();
+            if (id == reservationId) {
+                keyReservation = reservation.getKey();
+            }
+        }
+
+        Optional<Reservation> resultReservation = Optional.ofNullable(keyReservation);
+        if (resultReservation.isPresent()) {
+            reservationMap.remove(keyReservation);
+            System.out.println("Your reservation has been succesfully canceled");
+            succeed = true;
+        }
+        return succeed;
     }
 
     public boolean logOut() {
