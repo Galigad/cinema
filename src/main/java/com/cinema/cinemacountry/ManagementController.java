@@ -1,10 +1,12 @@
 package com.cinema.cinemacountry;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class ManagementController {
 
-    User user;
-    Admin admin;
-    Repertory repertory;
+   private User user;
+   private Admin admin;
+   private Repertory repertory;
 
     Admin createAdminAccount() {
         return admin;

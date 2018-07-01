@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("singielton")
+@Scope("Singleton")
 public class Admin {
     private int id=0;
     private String name;
@@ -17,7 +17,8 @@ public class Admin {
     @Autowired
     RepertoryConfig repertoryConfig;
     
-    private Admin () {}
+    private Admin () {
+    }
 
     public Admin (String name, String surname, String mail, int phoneNumber, int pin) {
         name=this.name;
@@ -26,7 +27,6 @@ public class Admin {
         phoneNumber=this.phoneNumber;
         pin=this.pin;
     }
-
 
     public Hall createHall(String hallName, int capacity) { 
         return new Hall(name, capacity);
